@@ -391,270 +391,204 @@
           </div>
         </div>
       </div>
-        <script>
-          var myInput = document.getElementById("psw");
-          var letter = document.getElementById("letter");
-          var capital = document.getElementById("capital");
-          var number = document.getElementById("number");
-          var length = document.getElementById("length");
+      <script>
+        var myInput = document.getElementById("psw");
+        var letter = document.getElementById("letter");
+        var capital = document.getElementById("capital");
+        var number = document.getElementById("number");
+        var length = document.getElementById("length");
 
-          // When the user clicks on the password field, show the message box
-          myInput.onfocus = function () {
-            document.getElementById("message").style.display = "block";
+        // When the user clicks on the password field, show the message box
+        myInput.onfocus = function () {
+          document.getElementById("message").style.display = "block";
+        }
+
+        // When the user clicks outside of the password field, hide the message box
+        myInput.onblur = function () {
+          document.getElementById("message").style.display = "none";
+        }
+
+        // When the user starts to type something inside the password field
+        myInput.onkeyup = function () {
+          // Validate lowercase letters
+          var lowerCaseLetters = /[a-z]/g;
+          if (myInput.value.match(lowerCaseLetters)) {
+            letter.classList.remove("invalid");
+            letter.classList.add("valid");
+          } else {
+            letter.classList.remove("valid");
+            letter.classList.add("invalid");
           }
 
-          // When the user clicks outside of the password field, hide the message box
-          myInput.onblur = function () {
-            document.getElementById("message").style.display = "none";
+          // Validate capital letters
+          var upperCaseLetters = /[A-Z]/g;
+          if (myInput.value.match(upperCaseLetters)) {
+            capital.classList.remove("invalid");
+            capital.classList.add("valid");
+          } else {
+            capital.classList.remove("valid");
+            capital.classList.add("invalid");
           }
 
-          // When the user starts to type something inside the password field
-          myInput.onkeyup = function () {
-            // Validate lowercase letters
-            var lowerCaseLetters = /[a-z]/g;
-            if (myInput.value.match(lowerCaseLetters)) {
-              letter.classList.remove("invalid");
-              letter.classList.add("valid");
-            } else {
-              letter.classList.remove("valid");
-              letter.classList.add("invalid");
-            }
-
-            // Validate capital letters
-            var upperCaseLetters = /[A-Z]/g;
-            if (myInput.value.match(upperCaseLetters)) {
-              capital.classList.remove("invalid");
-              capital.classList.add("valid");
-            } else {
-              capital.classList.remove("valid");
-              capital.classList.add("invalid");
-            }
-
-            // Validate numbers
-            var numbers = /[0-9]/g;
-            if (myInput.value.match(numbers)) {
-              number.classList.remove("invalid");
-              number.classList.add("valid");
-            } else {
-              number.classList.remove("valid");
-              number.classList.add("invalid");
-            }
-
-            // Validate length
-            if (myInput.value.length >= 8) {
-              length.classList.remove("invalid");
-              length.classList.add("valid");
-            } else {
-              length.classList.remove("valid");
-              length.classList.add("invalid");
-            }
+          // Validate numbers
+          var numbers = /[0-9]/g;
+          if (myInput.value.match(numbers)) {
+            number.classList.remove("invalid");
+            number.classList.add("valid");
+          } else {
+            number.classList.remove("valid");
+            number.classList.add("invalid");
           }
-        </script>
-      </div>
 
-
-      <!-- Contact Modal HTML -->
-      <div id="contactModal" class="modal fade">
-        <div class="modal-dialog contact-modal">
-          <div class="modal-content" id="contact-modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Contact</h4>
-              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-            </div>
-            <div class="modal-body">
-              <!-- Google maps-->
-              <div class="container contact-modal-content-adresse">
-                <div class="row">
-                  <div class="col">
-                    <h4>Adresse</h4>
-                    <ul>
-                      <li>8, rue Viguet - 1227 Les Acacias </li>
-                    </ul>
-                    <h4>Téléphone</h4>
-                    <ul>
-                      <li>+ 41 (0)22 308 60 10</li>
-                    </ul>
-                    <h4>Horaires</h4>
-                    <ul>
-                      <li>Du lundi au vendredi, de 9h à 17H</li>
-                    </ul>
-                  </div>
-                </div>
-              </div><br>
-              <div class="container contact-modal-content-adresse">
-                <div class="row">
-                  <div class="col">
-                    <h4>Localisation</h4>
-                    <iframe
-                      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.8802012085266!2d6.12650291555611!3d46.19294257911629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7b2e1299827b%3A0xb6bbc30dd8e5306f!2sr%C3%A9alise%20-%20magasin%20d&#39;informatique%20d&#39;occasion!5e0!3m2!1sfr!2sch!4v1605783655516!5m2!1sfr!2sch"
-                      width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
-                      tabindex="0"></iframe>
-                  </div>
-                </div>
-              </div><br>
-
-
-              <div class="container contact-modal-content-adresse">
-                <div class="row">
-                  <div class="col">
-                    <h4>Contactez-nous</h4>
-                    <form action="/examples/actions/confirmation.php" method="post">
-                      <div class="form-group">
-                        <label for="inputName">Nom</label>
-                        <input type="text" class="form-control" id="inputName" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputEmail">Email</label>
-                        <input type="email" class="form-control" id="inputEmail" required>
-                      </div>
-                      <div class="form-group">
-                        <label for="inputMessage">Message</label>
-                        <textarea class="form-control" id="inputMessage" rows="4" required></textarea>
-                      </div>
-                      <input type="submit" class="btn btn-primary" value="Send">
-                      <input type="button" class="btn btn-link" data-dismiss="modal" value="Cancel">
-                    </form>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- ./Contact Modal HTML -->
-
-      <!--------------------- new Page Modal HTML --------------------->
-      <div id="newPageModal" class="modal fade">
-        <div class="modal-dialog modal-login">
-          <div class="modal-content">
-            <form action="/examples/actions/newpage.php" method="post">
-              <div class="modal-header">
-                <h4 class="modal-title">Créer une page</h4>
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-              </div>
-
-              <div class="modal-body">
-
-                <div class="form-group">
-                  <label for="exampleFormControlInput1" class="form-label">email</label>
-                  <input type="email" class="form-control" id="exampleFormControlInput1"
-                    placeholder="yourname@yourdomain.com">
-                </div>
-
-                <div class="form-group">
-                  <label>Pseudo</label>
-                  <input type="text" class="form-control" required="required">
-                </div>
-
-                <div class="form-group row">
-                  <label for="example-date-input" class="col-2 col-form-label">Date</label>
-                  <div class="col-12">
-                    <input class="form-control" type="date" value="2020-12-24" id="example-date-input">
-                  </div>
-                </div>
-
-                <div class="form-group">
-                  <label>Titre de l'article</label>
-                  <input type="text" class="form-control" required="required">
-                </div>
-
-                <div class="form-group">
-                  <label>Texte</label>
-                  <textarea rows="7" class="form-control" required="required"></textarea>
-                </div>
-
-              </div>
-              <div class="modal-footer justify-content-between">
-                <input type="submit" class="btn btn-primary" value="Send">
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      <!--../------------------- ../new Page Modal HTML --------------------->
-
-      <!-- footer-->
-      <footer>
-        <div class="container">
-
-          <div class="row">
-            <!-- Logo pied de page -->
-            <div class="col-sm-4">
-              <div class="d-flex justify-content-between">
-                <img src="assets/images/logoSarss.png" class="footer-logo" alt="" />
-              </div>
-            </div>
-
-            <!-- Copyright -->
-            <div class="col-sm-4">
-              <div class="d-lg-flex justify-content-between align-items-center  mt-5 footer-bottom">
-                <p class="font-weight-medium">
-                  © 2020 @ Sarsport, Inc.All Rights Reserved.
-                </p>
-              </div>
-            </div>
-
-            <!-- Suivez-nous -->
-            <div class="col-sm-4">
-              <div class="d-flex justify-content-end footer-social">
-                <h5 class="m-0 font-weight-600 mr-3 d-none d-lg-flex">Suivez-nous:</h5>
-                <ul class="social-media">
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-instagram"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-facebook"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-youtube"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-linkedin"></i>
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <i class="mdi mdi-twitter"></i>
-                    </a>
-                  </li>
-                </ul>
-              </div>
-
-            </div>
-          </div>
-
-
-        </div>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
-          integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous">
-          </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"
-          integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous">
-          </script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js"
-          integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous">
-          </script>
-      </footer>
-
-      <!-- partial -->
+          // Validate length
+          if (myInput.value.length >= 8) {
+            length.classList.remove("invalid");
+            length.classList.add("valid");
+          } else {
+            length.classList.remove("valid");
+            length.classList.add("invalid");
+          }
+        }
+      </script>
     </div>
 
-    <!-- inject:js -->
-    <script src="assets/vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- plugin js for this page -->
-    <script src="./assets/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
-    <!-- End plugin js for this page -->
-    <!-- Custom js for this page-->
-    <script src="./assets/js/demo.js"></script>
-    <!-- End custom js for this page-->
+
+    <!-- Contact Modal HTML -->
+    <div id="contactModal" class="modal fade">
+      <div class="modal-dialog contact-modal">
+        <div class="modal-content" id="contact-modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">Contact</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <!-- Google maps-->
+            <div class="container contact-modal-content-adresse">
+              <div class="row">
+                <div class="col">
+                  <h4>Adresse</h4>
+                  <ul>
+                    <li>8, rue Viguet - 1227 Les Acacias </li>
+                  </ul>
+                  <h4>Téléphone</h4>
+                  <ul>
+                    <li>+ 41 (0)22 308 60 10</li>
+                  </ul>
+                  <h4>Horaires</h4>
+                  <ul>
+                    <li>Du lundi au vendredi, de 9h à 17H</li>
+                  </ul>
+                </div>
+              </div>
+            </div><br>
+            <div class="container contact-modal-content-adresse">
+              <div class="row">
+                <div class="col">
+                  <h4>Localisation</h4>
+                  <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2761.8802012085266!2d6.12650291555611!3d46.19294257911629!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x478c7b2e1299827b%3A0xb6bbc30dd8e5306f!2sr%C3%A9alise%20-%20magasin%20d&#39;informatique%20d&#39;occasion!5e0!3m2!1sfr!2sch!4v1605783655516!5m2!1sfr!2sch"
+                    width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false"
+                    tabindex="0"></iframe>
+                </div>
+              </div>
+            </div><br>
+
+
+            <div class="container contact-modal-content-adresse">
+              <div class="row">
+                <div class="col">
+                  <h4>Contactez-nous</h4>
+                  <form action="/examples/actions/confirmation.php" method="post">
+                    <div class="form-group">
+                      <label for="inputName">Nom</label>
+                      <input type="text" class="form-control" id="inputName" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputEmail">Email</label>
+                      <input type="email" class="form-control" id="inputEmail" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputMessage">Message</label>
+                      <textarea class="form-control" id="inputMessage" rows="4" required></textarea>
+                    </div>
+                    <input type="submit" class="btn btn-primary" value="Send">
+                    <input type="button" class="btn btn-link" data-dismiss="modal" value="Cancel">
+                  </form>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- ./Contact Modal HTML -->
+
+    <!--------------------- new Page Modal HTML --------------------->
+    <div id="newPageModal" class="modal fade">
+      <div class="modal-dialog modal-login">
+        <div class="modal-content">
+          <form action="/examples/actions/newpage.php" method="post">
+            <div class="modal-header">
+              <h4 class="modal-title">Créer une page</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            </div>
+
+            <div class="modal-body">
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1" class="form-label">email</label>
+                <input type="email" class="form-control" id="exampleFormControlInput1"
+                  placeholder="yourname@yourdomain.com">
+              </div>
+
+              <div class="form-group">
+                <label>Pseudo</label>
+                <input type="text" class="form-control" required="required">
+              </div>
+
+              <div class="form-group row">
+                <label for="example-date-input" class="col-2 col-form-label">Date</label>
+                <div class="col-12">
+                  <input class="form-control" type="date" value="2020-12-24" id="example-date-input">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label>Titre de l'article</label>
+                <input type="text" class="form-control" required="required">
+              </div>
+
+              <div class="form-group">
+                <label>Texte</label>
+                <textarea rows="7" class="form-control" required="required"></textarea>
+              </div>
+
+            </div>
+            <div class="modal-footer justify-content-between">
+              <input type="submit" class="btn btn-primary" value="Send">
+            </div>
+          </form>
+          
+        </div>
+      </div>
+    </div>
+    <!--../------------------- ../new Page Modal HTML --------------------->
+
+    
+
+    <!-- partial -->
+  </div>
+
+  <!-- inject:js -->
+  <script src="assets/vendors/js/vendor.bundle.base.js"></script>
+  <!-- endinject -->
+  <!-- plugin js for this page -->
+  <script src="./assets/vendors/owl.carousel/dist/owl.carousel.min.js"></script>
+  <!-- End plugin js for this page -->
+  <!-- Custom js for this page-->
+  <script src="./assets/js/demo.js"></script>
+  <!-- End custom js for this page-->
   </div>
 </body>
 
